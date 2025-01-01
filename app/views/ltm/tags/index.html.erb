@@ -1,0 +1,14 @@
+List of tags here...
+<br>
+<ul>
+    <% @tags.each do |t| %>
+        <li><%= t.name %></li>
+    <% end %>
+</ul>
+<br>
+<%= link_to "Create a new Tag", new_tag_path %>
+<br>
+<br>
+<%= link_to "Create a new User", new_user_path %>
+&emsp;
+<%= link_to "Create a new Task", new_task_path %>

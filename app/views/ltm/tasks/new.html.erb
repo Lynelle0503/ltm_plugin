@@ -1,0 +1,27 @@
+<h5>New Task Creation</h5>
+
+<%= form_with model:@task, local: true do |f| %>
+    <%= f.label "Task Name" %>
+    &emsp;
+    <%= f.text_field :title %> <br>
+    <%= f.label "Task Description" %>
+    &emsp;
+    <%= f.text_field :body %> <br>
+    <%= f.label "Task Status" %>
+    &emsp;
+    <%# f.text_select :status, options_for_select(["In Progress","Completed"], selected: @task.status), prompt: "Task Status" %> 
+    <%= f.select :status, options_for_select(['In Progress', 'Completed'], selected: @task.status), prompt: "Select Status" %><br>
+    <%= f.label "Due Date" %>
+    &emsp;
+    <%= f.date_field :due %> <br>
+    <%= f.label "Username (optional)" %>
+    &emsp;
+    <%= f.collection_select(:user, @users,:id, :username, prompt: "Created by ")%> <br>
+    <%= f.label "Category (optional)" %>
+    &emsp;
+    <%= f.collection_select(:tag, @tags,:id, :name, prompt: "Choose Category...")%> <br> <br>
+    <%= f.submit "Create Task", disable_with: 'Creating Task...' %>
+<% end %>
+
+<br>
+<%= link_to "Back to Tags", tags_path %>

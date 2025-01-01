@@ -1,0 +1,23 @@
+<h5>Creating users</h5>
+<%= form_with model:@user, local: true do |f| %>
+    <% if @user.errors.any? %>
+        <ul>
+            <% @user.errors.full_messages.each do |m| %>
+                <li style="color:red;"><%= m%></li>
+            <% end %>
+        </ul>
+    <% end %>
+    <%= f.label "Username" %>
+    &emsp;
+    <%= f.text_field :username %> <br>
+    <%= f.label "Password" %>
+    &emsp;
+    <%= f.password_field :password %> <br>
+    <%= f.label "Confirm Password" %>
+    &emsp;
+    <%= f.password_field :password %> <br> <br>
+    <%= f.submit "Create User", disable_with: 'Creating User...' %>
+<% end %>
+
+<br>
+<%= link_to "Back to Users index", users_path %>
